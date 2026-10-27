@@ -112,10 +112,10 @@
             <!-- PESTAÑAS DE NAVEGACIÓN PRINCIPAL -->
             <nav class="app-nav-tabs" id="main-nav-tabs">
                 <button class="app-nav-tab active" data-view="dashboard">📊 Dashboard</button>
+                <button class="app-nav-tab" data-view="decision" style="border-color:rgba(239,68,68,0.5);color:#fca5a5;">🚨 FASE 0: Los Primeros 90s</button>
                 <button class="app-nav-tab" data-view="water">💧 Agua y Racionamiento</button>
-                <button class="app-nav-tab" data-view="fallout">☢️ Fí­sica Nuclear / Fallout</button>
+                <button class="app-nav-tab" data-view="fallout">☢️ Física Nuclear / Fallout</button>
                 <button class="app-nav-tab" data-view="bag">🎒 Mochila 72 Horas</button>
-                <button class="app-nav-tab" data-view="decision">🧭 Triaje 90 Segundos</button>
                 <button class="app-nav-tab" data-view="kratky" data-req-tier="sistema">🌱 Bio-Soberanía Kratky</button>
                 <button class="app-nav-tab" data-view="fichas" data-req-tier="sistema">📋 40 Fichas Familiares</button>
                 <button class="app-nav-tab" data-view="library" data-req-tier="sistema">📚 Enciclopedia 4 Vols</button>
@@ -187,9 +187,10 @@
                             <h3 style="font-family:var(--font-display);color:#fff;font-size:1.1rem;margin:0 0 0.5rem 0;">🎒 Mochila 72 Horas</h3>
                             <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;">Sistema de 3 capas con pesaje dinámico y regla de marcha de 20 min.</p>
                         </div>
-                        <div class="tactical-card" style="padding:1.25rem;cursor:pointer;" data-goto="decision">
-                            <h3 style="font-family:var(--font-display);color:#fff;font-size:1.1rem;margin:0 0 0.5rem 0;">🧭 Triaje de los 90s</h3>
-                            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;">¿Quedarse o salir? Protocolos de acción ante las 12 amenazas críticas.</p>
+                        <div class="tactical-card" style="padding:1.25rem;cursor:pointer;border-color:rgba(239,68,68,0.5);background:linear-gradient(180deg, rgba(239,68,68,0.08) 0%, rgba(16,29,41,0.95) 100%);" data-goto="decision">
+                            <span class="badge-tactical" style="color:var(--status-red);border-color:var(--status-red);margin-bottom:6px;display:inline-block;">PUNTO DE PARTIDA TÁCTICO</span>
+                            <h3 style="font-family:var(--font-display);color:#fff;font-size:1.15rem;margin:0 0 0.5rem 0;">🚨 FASE 0: Los Primeros 90 Segundos</h3>
+                            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;">Matriz universal de 16 catástrofes en 4 columnas. Cronómetro activo de impacto y decisión binaria de supervivencia.</p>
                         </div>
                         <div class="tactical-card" style="padding:1.25rem;cursor:pointer;border-color:rgba(34,197,94,0.4);" data-goto="kratky">
                             <h3 style="font-family:var(--font-display);color:var(--status-green);font-size:1.1rem;margin:0 0 0.5rem 0;">🌱 Hidroponía Kratky</h3>
@@ -272,7 +273,7 @@
         import { FalloutEngine } from './js/fallout-engine.js';
         import { KratkyEngine } from './js/kratky-engine.js';
         import { BagEngine } from './js/bag-engine.js';
-        import { DecisionEngine } from './js/decision-engine.js';
+        import { Phase0Engine } from './js/phase0-engine.js';
         import { FamilyPlanEngine } from './js/family-plan-engine.js';
         import { VOLUMES } from './data/volumes.js';
 
@@ -281,7 +282,7 @@
         const falloutApp = new FalloutEngine('fallout-engine-mount');
         const kratkyApp = new KratkyEngine('kratky-engine-mount');
         const bagApp = new BagEngine('bag-engine-mount');
-        const decisionApp = new DecisionEngine('decision-engine-mount');
+        const phase0App = new Phase0Engine('decision-engine-mount');
         const fichasApp = new FamilyPlanEngine('fichas-engine-mount');
 
         // 2. Renderizar Biblioteca de Volúmenes

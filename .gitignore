@@ -1,0 +1,25 @@
+# Sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+._*
+
+# Editores y entornos
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Credenciales y variables sensibles
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+
+# Archivos de respaldo y temporales
+*.bak
+*.tmp
+*~
+*.log

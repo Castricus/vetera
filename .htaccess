@@ -1,0 +1,102 @@
+# ============================================================================
+# .htaccess para Supervivencia Final — Optimizado para Hostinger (LiteSpeed/Apache)
+# ============================================================================
+
+# ----- Caché de navegador -----
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Documentos HTML — revalidar siempre (despliegues inmediatos)
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # Código CSS / JS / JSON
+  ExpiresByType text/css "access plus 1 hours"
+  ExpiresByType application/javascript "access plus 1 hours"
+  ExpiresByType text/javascript "access plus 1 hours"
+  ExpiresByType application/json "access plus 1 hours"
+
+  # Medios e imágenes (WebP, SVG, AVIF, PNG)
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/avif "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+
+  # Tipografías locales de alto rendimiento (WOFF2)
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+</IfModule>
+
+# ----- Cabeceras Cache-Control y Seguridad -----
+<IfModule mod_headers.c>
+  # HTML siempre fresco
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # JS / CSS / JSON
+  <FilesMatch "\.(css|js|mjs|json)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # Medios y fuentes con caché larga
+  <FilesMatch "\.(webp|jpg|jpeg|png|svg|avif|ico|woff|woff2)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # Seguridad del servidor
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# ----- Tipos MIME -----
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType image/avif .avif
+  AddType application/javascript .js
+  AddType application/javascript .mjs
+  AddType text/css .css
+  AddType application/json .json
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+  AddType image/svg+xml .svg
+</IfModule>
+
+# ----- Compresión Gzip / Deflate -----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# ----- Redirección HTTPS -----
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# ----- Protección y Bloqueo de Seguridad -----
+# Bloquear acceso a .git, .env y archivos ocultos
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule "(^|/)\." - [F,L]
+</IfModule>
+
+# Bloquear documentación técnica interna y scripts
+<FilesMatch "\.(md|markdown|bak|old|orig|log|mjs|sh|ps1|yml|yaml)$">
+  Require all denied
+</FilesMatch>
+
+# Permitir explícitamente robots.txt y sitemap.xml
+<Files "robots.txt">
+  Require all granted
+</Files>
+<Files "sitemap.xml">
+  Require all granted
+</Files>
+
+# Desactivar listado de directorios
+Options -Indexes

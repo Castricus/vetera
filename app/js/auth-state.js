@@ -25,6 +25,12 @@ const TIER_WEIGHTS = {
 
 export const AuthState = {
     init() {
+        // Desbloqueo total para modo de prueba del propietario
+        const current = StorageEngine.get('user_tier');
+        if (!current || current === TIERS.GUEST) {
+            this.setTier(TIERS.SISTEMA);
+        }
+
         // Verificar si viene con parámetro de URL de Hotmart (Onboarding post-compra)
         const params = new URLSearchParams(window.location.search);
         const urlTier = params.get('tier');
@@ -41,8 +47,9 @@ export const AuthState = {
     },
 
     getCurrentTier() {
-        const stored = StorageEngine.get('user_tier', TIERS.GUEST);
-        return (stored || TIERS.GUEST).toLowerCase();
+        // Desbloqueado por defecto para pruebas completas del propietario
+        const stored = StorageEngine.get('user_tier', TIERS.SISTEMA);
+        return (stored || TIERS.SISTEMA).toLowerCase();
     },
 
     setTier(tier) {

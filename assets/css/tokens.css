@@ -1,0 +1,175 @@
+/* ============================================================================
+   SUPERVIVENCIA FINAL — SISTEMA DE DISEÑO: DEFENSA CIVIL NÓRDICA / RADAR OTAN
+   tokens.css · Variables maestras, tipografía y micro-rejilla táctica
+   ============================================================================ */
+
+/* ----- Fuentes Locales de Alto Rendimiento (Cero peticiones externas) ----- */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/oswald-400-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/oswald-500-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/oswald-600-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/oswald-700-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/inter-400-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/inter-500-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/inter-600-latin.woff2') format('woff2');
+}
+
+:root {
+  /* ----- 1. Paleta de Color Nórdica / Radar OTAN ----- */
+  --bg-abyssal: #0a1118;            /* Fondo base: Azul abisal de mando */
+  --bg-surface: #101d29;            /* Superficie de módulos técnicos */
+  --bg-surface-elevated: #152636;   /* Módulos interactivos y tarjetas hover */
+  --bg-surface-overlay: rgba(16, 29, 41, 0.85); /* Superficie con desenfoque / glassmorphism */
+
+  /* Bordes de precisión táctica */
+  --border-subtle: #1c3044;         /* Borde perimetral estándar */
+  --border-strong: #2a4663;         /* Borde activo / enfoque */
+  --border-glow: rgba(125, 211, 252, 0.25); /* Resplandor perimetral radar */
+
+  /* Tipografías y contraste */
+  --text-primary: #ffffff;          /* Blanco puro: Títulos de máxima jerarquía */
+  --text-metallic: #7dd3fc;         /* Azul metálico técnico: Subtítulos, métricas, HUD */
+  --text-muted: #94a3b8;            /* Gris pizarra neutro: Párrafos y descripciones */
+  --text-dim: #64748b;              /* Texto secundario y etiquetas técnicas */
+
+  /* Colores de Acción y Telemetría */
+  --action-yellow: #facc15;         /* Amarillo rescate: Botones de conversión y llamada a la acción */
+  --action-yellow-hover: #eab308;   /* Amarillo rescate presionado/hover */
+  --action-yellow-glow: rgba(250, 204, 21, 0.28);
+  --status-green: #22c55e;          /* Verde fósforo operativo: Telemetría positiva y verificación */
+  --status-green-glow: rgba(34, 197, 94, 0.25);
+  --status-amber: #f59e0b;          /* Alerta preventiva nivel 2 */
+  --status-red: #ef4444;            /* Nivel crítico de riesgo */
+
+  /* ----- 2. Tipografía ----- */
+  --font-display: 'Oswald', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+
+  /* Escala tipográfica fluida */
+  --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.75rem);
+  --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
+  --text-base: clamp(0.925rem, 0.875rem + 0.25vw, 1rem);
+  --text-lg: clamp(1.05rem, 0.98rem + 0.35vw, 1.15rem);
+  --text-xl: clamp(1.2rem, 1.1rem + 0.5vw, 1.35rem);
+  --text-2xl: clamp(1.5rem, 1.35rem + 0.75vw, 1.75rem);
+  --text-3xl: clamp(1.85rem, 1.6rem + 1.25vw, 2.25rem);
+  --text-4xl: clamp(2.3rem, 1.9rem + 2vw, 3rem);
+  --text-5xl: clamp(2.8rem, 2.2rem + 3vw, 4rem);
+
+  /* Espaciado modular */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-4xl: 6rem;
+
+  /* Radios de curvatura de centro de mando (mínimos, estéticos e industriales) */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-pill: 9999px;
+
+  /* Sombras y elevaciones de pantalla táctica */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -4px rgba(0, 0, 0, 0.6);
+  --shadow-tactical: 0 0 0 1px var(--border-subtle), 0 8px 24px -4px rgba(0, 0, 0, 0.7);
+
+  /* Transiciones precisas */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Índices Z de mando */
+  --z-base: 1;
+  --z-surface: 10;
+  --z-sticky: 50;
+  --z-header: 100;
+  --z-modal: 500;
+  --z-telemetry: 1000;
+
+  /* ----- 3. Micro-rejilla Radar OTAN (Patrón técnico de fondo) ----- */
+  --radar-grid: linear-gradient(to right, rgba(28, 48, 68, 0.18) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(28, 48, 68, 0.18) 1px, transparent 1px);
+  --radar-grid-dense: linear-gradient(to right, rgba(125, 211, 252, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(125, 211, 252, 0.05) 1px, transparent 1px);
+  --radar-grid-size: 40px 40px;
+  --radar-grid-size-dense: 8px 8px;
+}
+
+/* Aplicación global del fondo y suavizado */
+html {
+  background-color: var(--bg-abyssal);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Clase utilitaria de fondo radar técnico */
+.bg-radar-grid {
+  background-color: var(--bg-abyssal);
+  background-image: var(--radar-grid);
+  background-size: var(--radar-grid-size);
+  background-position: center center;
+}

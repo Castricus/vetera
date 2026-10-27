@@ -1,0 +1,264 @@
+/* ============================================================================
+   SUPERVIVENCIA FINAL — SISTEMA DE DISEÑO: DEFENSA CIVIL NÓRDICA / RADAR OTAN
+   layout.css · Contenedores, rejillas, barra de mando y estructura responsiva
+   ============================================================================ */
+
+/* ----- Reseteo y Base Estructural ----- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-abyssal);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden; /* Prohibido overflow global que rompa scroll */
+}
+
+/* Capa de fondo con micro-rejilla radar permanente */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: var(--radar-grid);
+  background-size: var(--radar-grid-size);
+  background-position: center center;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+}
+
+/* Contenedor maestro responsivo */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+  position: relative;
+  z-index: var(--z-base);
+}
+
+.container-narrow {
+  max-width: 960px;
+}
+
+.container-full {
+  max-width: 100%;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+/* ----- Barra Superior de Mando / Header Táctico ----- */
+.header-command {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: rgba(10, 17, 24, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  z-index: var(--z-header);
+  transition: border-color var(--transition-fast);
+}
+
+.header-command .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+}
+
+.header-brand .brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  color: var(--action-yellow);
+}
+
+.header-brand .brand-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1;
+}
+
+.header-brand .brand-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-metallic);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.header-telemetry {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-metallic);
+  background-color: rgba(16, 29, 41, 0.6);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ----- Secciones Maestras ----- */
+.section {
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+  position: relative;
+  z-index: var(--z-base);
+}
+
+.section-hero {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-4xl);
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+}
+
+.section-dark {
+  background-color: rgba(16, 29, 41, 0.45);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Encabezados de Sección */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-metallic);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-sm);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+  line-height: 1.15;
+}
+
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* ----- Rejilla de Hero (Titular + Widget de Diagnóstico) ----- */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+/* Rejilla de Módulos (2, 3 y 4 columnas tácticas) */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+/* ----- Footer Táctico ----- */
+.footer-command {
+  border-top: 1px solid var(--border-subtle);
+  background-color: var(--bg-abyssal);
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-2xl);
+  position: relative;
+  z-index: var(--z-base);
+}
+
+/* ----- Responsive Breakpoints ----- */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-3, .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .header-telemetry {
+    display: none; /* Ocultar telemetría secundaria en móviles para dar prioridad al CTA */
+  }
+
+  .container {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+}

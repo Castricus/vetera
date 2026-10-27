@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESCARGA GRATUITA · Cuaderno de Trabajo del Plan Familiar</title>
+    <!-- Estilos Tácticos Nórdicos -->
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body class="bg-radar-grid" style="display:flex;flex-direction:column;min-height:100vh;">
+
+    <header class="header-command">
+        <div class="container">
+            <a href="index.html" class="header-brand">
+                <span class="brand-badge">☢️</span>
+                <div>
+                    <h1 class="brand-title">SUPERVIVENCIA FINAL</h1>
+                    <div class="brand-tag">RECURSO OFICIAL DE PREVENCIÓN CIVIL</div>
+                </div>
+            </a>
+            <a href="index.html" class="btn btn-sm btn-secondary">Volver al Sitio</a>
+        </div>
+    </header>
+
+    <main class="section" style="flex:1;display:flex;align-items:center;">
+        <div class="container container-narrow">
+            <div class="tactical-card" style="padding:2.5rem 2rem;">
+                <div style="text-align:center;margin-bottom:2rem;">
+                    <span class="badge-tactical" style="color:var(--status-green);">ACCESO LIBRE COMUNITARIO</span>
+                    <h2 class="section-title" style="font-size:var(--text-3xl);margin-top:0.5rem;text-transform:uppercase;">
+                        Cuaderno de Trabajo del Plan Familiar (Muestra Táctica)
+                    </h2>
+                    <p style="font-size:var(--text-sm);color:var(--text-muted);max-width:580px;margin:0 auto;line-height:1.6;">
+                        El pánico no salva vidas; un protocolo familiar por escrito, sí. Descarga la guía ejecutable con la Ficha de Censo Familiar (F01), el cálculo de la Meta Hídrica a 14 días y la asignación de misiones para cada integrante.
+                    </p>
+                </div>
+
+                <div style="max-width:480px;margin:0 auto;">
+                    <form id="brevo-lead-form" style="display:flex;flex-direction:column;gap:1rem;">
+                        <div>
+                            <label style="display:block;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-metallic);margin-bottom:4px;text-transform:uppercase;">
+                                Tu Nombre de Pila:
+                            </label>
+                            <input type="text" id="lead-name" required placeholder="Ej. Andrés" style="width:100%;padding:0.75rem 1rem;background:#0b131c;border:1px solid var(--border-subtle);color:#fff;border-radius:var(--radius-xs);font-size:var(--text-sm);">
+                        </div>
+
+                        <div>
+                            <label style="display:block;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-metallic);margin-bottom:4px;text-transform:uppercase;">
+                                Tu Correo Electrónico Principal:
+                            </label>
+                            <input type="email" id="lead-email" required placeholder="correo@ejemplo.com" style="width:100%;padding:0.75rem 1rem;background:#0b131c;border:1px solid var(--border-subtle);color:#fff;border-radius:var(--radius-xs);font-size:var(--text-sm);">
+                        </div>
+
+                        <div style="font-size:11px;color:var(--text-dim);line-height:1.4;">
+                            🔒 Cero spam. Solo directrices de defensa civil y actualizaciones tácticas. Puedes darte de baja con 1 clic en cualquier momento.
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full btn-lg" id="submit-lead-btn" style="margin-top:0.5rem;">
+                            DESCARGAR CUADERNO FAMILIAR (PDF)
+                        </button>
+                    </form>
+
+                    <div id="lead-success-msg" style="display:none;background:rgba(34,197,94,0.1);border:1px solid var(--status-green);padding:1.5rem;border-radius:var(--radius-sm);text-align:center;margin-top:1rem;">
+                        <span style="font-size:2rem;">✅</span>
+                        <h3 style="font-family:var(--font-display);color:#fff;margin:0.5rem 0;text-transform:uppercase;">
+                            ¡Registro Confirmado!
+                        </h3>
+                        <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0 0 1rem 0;">
+                            Hemos enviado el enlace directo a tu correo. También puedes abrir la Web App interactiva ahora mismo.
+                        </p>
+                        <a href="app/index.html" class="btn btn-secondary btn-full btn-sm">
+                            Abrir Centro de Mando Táctico
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById('brevo-lead-form');
+        const successMsg = document.getElementById('lead-success-msg');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('lead-name').value;
+            const email = document.getElementById('lead-email').value;
+
+            // Guardar localmente
+            localStorage.setItem('lead_registered', JSON.stringify({ name, email, date: new Date().toISOString() }));
+
+            // Ocultar formulario y mostrar mensaje de éxito
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

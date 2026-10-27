@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMO INTERACTIVA · Diagnóstico Rápido de Vulnerabilidad</title>
+    <!-- Estilos Tácticos Nórdicos -->
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body class="bg-radar-grid" style="display:flex;flex-direction:column;min-height:100vh;">
+
+    <header class="header-command">
+        <div class="container" style="justify-content:center;">
+            <a href="index.html" class="header-brand">
+                <span class="brand-badge">☢️</span>
+                <div>
+                    <h1 class="brand-title">AUDITORÍA TÁCTICA CIVIL</h1>
+                    <div class="brand-tag">@OPERACIONSUPERVIVENCIANUCLEAR</div>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <main class="section" style="flex:1;display:flex;align-items:center;padding:2rem 0;">
+        <div class="container container-narrow">
+            <div style="text-align:center;margin-bottom:2rem;">
+                <span class="badge-tactical" style="color:var(--action-yellow);">HERRAMIENTA EXCLUSIVA DE COMUNIDAD</span>
+                <h2 class="section-title" style="font-size:var(--text-3xl);margin-top:0.5rem;">
+                    Descubre el Índice de Vulnerabilidad de tu Hogar
+                </h2>
+                <p style="font-size:var(--text-sm);color:var(--text-muted);max-width:600px;margin:0 auto;">
+                    Responde 3 preguntas tácticas basadas en los estándares de Protección Civil de Suiza y Finlandia para calcular cuántas horas de autonomía real tiene tu familia.
+                </p>
+            </div>
+
+            <div id="demo-diagnostic-mount"></div>
+
+            <div style="text-align:center;margin-top:2rem;">
+                <a href="index.html" style="color:var(--text-metallic);font-family:var(--font-mono);font-size:12px;text-decoration:none;">
+                    ← Volver a la página principal de Supervivencia Final
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { HeroDiagnosticWidget } from './assets/js/diagnostic.js';
+        new HeroDiagnosticWidget('demo-diagnostic-mount');
+    </script>
+</body>
+</html>

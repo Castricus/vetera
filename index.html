@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPERVIVENCIA FINAL · Protocolo de Defensa Civil y Preparación Familiar</title>
+    <meta name="description" content="Ecosistema táctico de defensa civil y preparación familiar ante eventos nucleares, colapsos de red y emergencias graves. Basado en 38 fuentes públicas oficiales (FEMA, CDC, OMS, OIEA).">
+    
+    <!-- Metadatos Open Graph / Redes Sociales -->
+    <meta property="og:title" content="SUPERVIVENCIA FINAL · Ecosistema Táctico de Defensa Civil">
+    <meta property="og:description" content="Convierte tu hogar en una fortaleza autosuficiente frente a crisis extremas. Calculadoras interactivas, Manual de 447 páginas y 40 fichas ejecutables.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://operacionsupervivencianuclear.com">
+
+    <!-- Estilos Tácticos Nórdicos -->
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+
+    <!-- Microdatos JSON-LD para SEO y AEO (Respuestas para Motores de IA) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué incluye el Sistema Completo de Supervivencia Final?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Incluye acceso total a la Web App interactiva con calculadoras hídricas y radiológicas, el Manual Técnico Maestro de 447 páginas (5 partes, 20 capítulos), las 40 fichas del Plan Familiar (incluyendo las 12 fichas plastificables F29 a F40) y el módulo completo de Soberanía Alimentaria con Hidroponía Pasiva Kratky sin electricidad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿La aplicación web funciona sin conexión a internet durante un apagón?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. La plataforma está construida como una PWA con almacenamiento local en el navegador (localStorage). Una vez cargada por primera vez, todos los cálculos, simuladores y datos de tu plan familiar están disponibles de forma 100% offline sin necesidad de red."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿En qué fuentes científicas y oficiales está basado el protocolo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Está fundamentado en 38 fuentes públicas oficiales de referencia mundial, incluyendo directrices de FEMA (CPG 1-17), el Centro para el Control y Prevención de Enfermedades (CDC), la Organización Mundial de la Salud (OMS), el Organismo Internacional de Energía Atómica (OIEA) y el Laboratorio Nacional de Oak Ridge (ORNL)."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-radar-grid">
+
+    <!-- CABECERA SUPERIOR DE MANDO -->
+    <header class="header-command">
+        <div class="container">
+            <a href="index.html" class="header-brand">
+                <span class="brand-badge">☢️</span>
+                <div>
+                    <h1 class="brand-title">SUPERVIVENCIA FINAL</h1>
+                    <div class="brand-tag">DEFENSA CIVIL NÓRDICA · RADAR OTAN</div>
+                </div>
+            </a>
+
+            <div class="header-nav">
+                <div class="header-telemetry">
+                    <span class="status-dot status-dot-green"></span>
+                    <span>ESTÁNDAR FEMA / OIEA ACTIVO</span>
+                </div>
+                <a href="#precios" class="btn btn-sm btn-primary">ADQUIRIR SISTEMA</a>
+                <a href="app/index.html" class="btn btn-sm btn-secondary">ABRIR APP</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN HERO: TITULAR DE AUTORIDAD + WIDGET DE DIAGNÓSTICO -->
+    <section class="section section-hero">
+        <div class="container">
+            <div class="hero-grid">
+                
+                <!-- Columna Izquierda: Titular y Propuesta de Valor -->
+                <div>
+                    <div class="section-tag">
+                        <span class="status-dot status-dot-yellow"></span>
+                        PROTOCOLO DE DEFENSA CIVIL HOMOLOGADO
+                    </div>
+
+                    <h1 class="section-title" style="font-size:var(--text-4xl);line-height:1.1;margin-bottom:1.5rem;">
+                        EL PROTOCOLO QUE TRANSFORMA EL PÁNICO EN CONTROL Y PRECISIÓN MATEMÁTICA.
+                    </h1>
+
+                    <p style="font-size:var(--text-lg);color:var(--text-muted);line-height:1.6;margin-bottom:2rem;">
+                        Convierte tu hogar en una fortaleza autosuficiente frente a eventos nucleares, apagones masivos y quiebres logísticos. Desarrollado bajo directrices científicas desclasificadas de <strong>FEMA, CDC, OMS y OIEA</strong>.
+                    </p>
+
+                    <!-- Puntos Clave de Confianza -->
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:1rem;margin-bottom:2rem;">
+                        <div style="background:var(--bg-surface);border:1px solid var(--border-subtle);padding:0.75rem 1rem;border-radius:var(--radius-xs);">
+                            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-metallic);">📚 MANUAL DE 447 PÁGINAS</span>
+                            <div style="color:#fff;font-weight:600;font-size:var(--text-sm);">5 Partes · 20 Capítulos</div>
+                        </div>
+
+                        <div style="background:var(--bg-surface);border:1px solid var(--border-subtle);padding:0.75rem 1rem;border-radius:var(--radius-xs);">
+                            <span style="font-family:var(--font-mono);font-size:11px;color:var(--action-yellow);">📋 40 FICHAS TÁCTICAS</span>
+                            <div style="color:#fff;font-weight:600;font-size:var(--text-sm);">12 Plastificables F29-F40</div>
+                        </div>
+
+                        <div style="background:var(--bg-surface);border:1px solid var(--border-subtle);padding:0.75rem 1rem;border-radius:var(--radius-xs);">
+                            <span style="font-family:var(--font-mono);font-size:11px;color:var(--status-green);">🌱 SOBERANÍA KRATKY</span>
+                            <div style="color:#fff;font-weight:600;font-size:var(--text-sm);">Cultivo sin electricidad</div>
+                        </div>
+
+                        <div style="background:var(--bg-surface);border:1px solid var(--border-subtle);padding:0.75rem 1rem;border-radius:var(--radius-xs);">
+                            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-metallic);">💻 SUITE WEB OFFLINE</span>
+                            <div style="color:#fff;font-weight:600;font-size:var(--text-sm);">Calculadoras y triaje 90s</div>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+                        <a href="#precios" class="btn btn-lg btn-primary">
+                            DESBLOQUEAR EL SISTEMA COMPLETO ($47)
+                        </a>
+                        <a href="app/index.html" class="btn btn-lg btn-secondary">
+                            EXPLORAR LA WEB APP EN VIVO
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Widget de Diagnóstico Rápido de Vulnerabilidad -->
+                <div>
+                    <div id="hero-diagnostic-mount"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TIRA DE FUENTES OFICIALES HOMOLOGADAS -->
+    <div class="sources-strip">
+        <div class="source-item">
+            <span>🏛️</span>
+            <span>ESTÁNDAR: <strong>FEMA CPG 1-17</strong></span>
+        </div>
+        <div class="source-item">
+            <span>🛡️</span>
+            <span>PROTOCOLO: <strong>CDC RADIATION EMERGENCY</strong></span>
+        </div>
+        <div class="source-item">
+            <span>💧</span>
+            <span>HIDRATACIÓN: <strong>OMS / GUÍAS DE CALIDAD</strong></span>
+        </div>
+        <div class="source-item">
+            <span>☢️</span>
+            <span>SEGURIDAD: <strong>OIEA EPR-NPP</strong></span>
+        </div>
+        <div class="source-item">
+            <span>🔬</span>
+            <span>FÍSICA: <strong>OAK RIDGE NATIONAL LAB (ORNL)</strong></span>
+        </div>
+    </div>
+
+    <!-- SECCIÓN: LOS 6 SISTEMAS MAESTROS DE RESILIENCIA CIVIL -->
+    <section class="section section-dark" id="sistemas">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">PROCEDIMIENTOS OPERATIVOS ESTANDARIZADOS (SOP)</span>
+                <h2 class="section-title">LOS 6 SISTEMAS QUE BLINDAN A TU FAMILIA</h2>
+                <p class="section-subtitle">
+                    No se trata de esperar a que ocurra, sino de qué tan calculada y precisa es tu capacidad de respuesta civil.
+                </p>
+            </div>
+
+            <div class="grid-3">
+                <div class="tactical-card">
+                    <span class="badge-tactical" style="color:var(--action-yellow);">SISTEMA 01</span>
+                    <h3 style="font-family:var(--font-display);font-size:var(--text-xl);color:#fff;margin:0.75rem 0 0.5rem 0;text-transform:uppercase;">
+                        Los Primeros 90 Segundos
+                    </h3>
+                    <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.5;">
+                        Lo que hagas en el primer minuto y medio tras una alarma determina la supervivencia. Protocolo de tirarse al suelo, ecualizar presión en tímpanos y no mirar el destello.
+                    </p>
+                </div>
+
+                <div class="tactical-card">
+                    <span class="badge-tactical" style="color:var(--text-metallic);">SISTEMA 02</span>
+                    <h3 style="font-family:var(--font-display);font-size:var(--text-xl);color:#fff;margin:0.75rem 0 0.5rem 0;text-transform:uppercase;">
+                        Tu Hogar es tu Fortaleza
+                    </h3>
+                    <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.5;">
+                        Atenuación por Factor de Protección (PF). Cómo calcular el espesor de masa (concreto, tierra, ladrillo) para reducir la radiación gamma y sellar rendijas de aire en minutos.
+                    </p>
+                </div>
+
+                <div class="tactical-card">
+                    <span class="badge-tactical" style="color:var(--status-green);">SISTEMA 03</span>
+                    <h3 style="font-family:var(--font-display);font-size:var(--text-xl);color:#fff;margin:0.75rem 0 0.5rem 0;text-transform:uppercase;">
+                        Comunicaciones Anti-EMP
+                    </h3>
+                    <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.5;">
+                        Cuando las redes celulares y satelitales colapsan por sobretensión electromagnética. Blindaje en Jaula de Faraday casera y frecuencias de Protección Civil en radio AM/FM.
+                    </p>
+                </div>
+
+                <div class="tactical-card">
+                    <span class="badge-tactical" style="color:#ef4444;">SISTEMA 04</span>
+                    <h3 style="font-family:var(--font-display);font-size:var(--text-xl);color:#fff;margin:0.75rem 0 0.5rem 0;text-transform:uppercase;">
+                        Salud y Descontaminación
+                    </h3>
+                    <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.5;">
+                        Protocolo estricto para eliminar el 90% del material radiactivo en el umbral del hogar sin usar champú graso. Manejo de botiquín de trauma y racionamiento de fármacos vitales.
+                    </p>
+                </div>
+
+                <div class="tactical-card">
+                    <span class="badge-tactical" style="color:var(--action-yellow);">SISTEMA 05</span>
+                    <h3 style="font-family:var(--font-display);font-size:var(--text-xl);color:#fff;margin:0.75rem 0 0.5rem 0;text-transform:uppercase;">
+                        Autonomía Hídrica y Despensa
+                    </h3>
+                    <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.5;">
+                        Cálculo fisiológico de 4 litros por persona/día. Potabilización por cloración controlada (2 gotas/L) y rotación doméstica FIFO para despensas escalonadas a 30 y 90 días.
+                    </p>
+                </div>
+
+                <div class="tactical-card" style="border-color:rgba(34,197,94,0.4);">
+                    <span class="badge-tactical" style="color:var(--status-green);">SISTEMA 06</span>
+                    <h3 style="font-family:var(--font-display);font-size:var(--text-xl);color:var(--status-green);margin:0.75rem 0 0.5rem 0;text-transform:uppercase;">
+                        Bio-Soberanía Kratky
+                    </h3>
+                    <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.5;">
+                        Cultivo continuo en botellas recicladas sin bombas ni electricidad. Regeneración de hortalizas por totipotencia celular y formulaciones minerales de sales N-P-K.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: MATRIZ DE PRECIOS Y EMPAQUETADO DE LA OFERTA -->
+    <section class="section" id="precios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="color:var(--action-yellow);">ADQUISICIÓN TÁCTICA INMEDIATA</span>
+                <h2 class="section-title">SELECCIONA TU NIVEL DE PREPARACIÓN</h2>
+                <p class="section-subtitle">
+                    Acceso instantáneo con entrega inmediata. Sin suscripciones ni cuotas recurrentes: un solo pago único y acceso permanente.
+                </p>
+            </div>
+
+            <div class="grid-2" style="max-width:960px;margin:0 auto;align-items:stretch;">
+                
+                <!-- NIVEL 1: KIT DIGITAL ($17 USD) -->
+                <div class="tactical-card" style="display:flex;flex-direction:column;justify-content:space-between;">
+                    <div>
+                        <span class="badge-tactical" style="color:var(--text-metallic);">NIVEL 1 · ACCESO ESENCIAL</span>
+                        <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);color:#fff;margin:1rem 0 0.5rem 0;text-transform:uppercase;">
+                            Kit Digital de Acción Rápida
+                        </h3>
+                        <div style="margin-bottom:1.5rem;">
+                            <span style="font-family:var(--font-display);font-size:var(--text-4xl);color:#fff;font-weight:700;">$17</span>
+                            <span style="color:var(--text-metallic);font-family:var(--font-mono);font-size:var(--text-sm);">USD / Pago Único</span>
+                        </div>
+                        <p style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:1.5rem;line-height:1.5;">
+                            Ideal para quienes buscan herramientas interactivas de respuesta inmediata para calcular agua y organizar su mochila de 72 horas.
+                        </p>
+
+                        <ul style="font-size:var(--text-sm);color:#fff;line-height:1.8;padding-left:1.25rem;margin-bottom:2rem;">
+                            <li>✅ Acceso a la <strong>Web App Táctica</strong> en modo acción rápida.</li>
+                            <li>✅ <strong>Calculadora Hídrica</strong> y dosificador de desinfección.</li>
+                            <li>✅ <strong>Checklist Interactivo</strong> de la Mochila de 72h (Perfil Adulto).</li>
+                            <li>✅ <strong>Árbol de Decisión</strong> de los 90 segundos.</li>
+                            <li>✅ Las <strong>12 Fichas de Escenarios Críticos (F29 a F40)</strong>.</li>
+                            <li style="color:var(--text-dim);">❌ Módulo Kratky de Soberanía Alimentaria.</li>
+                            <li style="color:var(--text-dim);">❌ Gestor de las 40 Fichas del Plan Familiar.</li>
+                            <li style="color:var(--text-dim);">❌ Manual Maestro Técnico de 447 páginas en PDF.</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://pay.hotmart.com/placeholder-kit17" class="btn btn-secondary btn-full" style="text-decoration:none;">
+                        ADQUIRIR KIT DIGITAL ($17 USD)
+                    </a>
+                </div>
+
+                <!-- NIVEL 2: SISTEMA COMPLETO ($47 USD - RECOMENDADO) -->
+                <div class="tactical-card tactical-card-featured" style="display:flex;flex-direction:column;justify-content:space-between;position:relative;">
+                    <div style="position:absolute;top:-12px;right:20px;background:var(--action-yellow);color:#0a1118;font-family:var(--font-mono);font-size:11px;font-weight:700;padding:2px 10px;border-radius:var(--radius-pill);letter-spacing:0.05em;">
+                        RECOMENDADO · 80% ELIGE ESTE PLAN
+                    </div>
+
+                    <div>
+                        <span class="badge-tactical" style="color:var(--action-yellow);">NIVEL 2 · SUITE TOTAL DE DEFENSA CIVIL</span>
+                        <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);color:#fff;margin:1rem 0 0.5rem 0;text-transform:uppercase;">
+                            Sistema Completo de Resiliencia
+                        </h3>
+                        <div style="margin-bottom:1.5rem;">
+                            <span style="font-family:var(--font-display);font-size:var(--text-4xl);color:var(--action-yellow);font-weight:700;">$47</span>
+                            <span style="color:var(--text-metallic);font-family:var(--font-mono);font-size:var(--text-sm);">USD / Pago Único</span>
+                        </div>
+                        <p style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:1.5rem;line-height:1.5;">
+                            El blindaje total definitivo. Acceso permanente a toda la suite interactiva, los 4 volúmenes, la soberanía hidropónica y el Manual Maestro de 447 páginas.
+                        </p>
+
+                        <ul style="font-size:var(--text-sm);color:#fff;line-height:1.8;padding-left:1.25rem;margin-bottom:2rem;">
+                            <li>✅ <strong>Todo lo incluido en el Kit Digital ($17)</strong>.</li>
+                            <li>⭐ <strong>Módulo Completo de Soberanía Kratky:</strong> Guías PET, formulación de sales minerales N-P-K y diagnóstico de plagas.</li>
+                            <li>⭐ <strong>Gestor de las 40 Fichas Familiares (F01 a F40):</strong> Editable en vivo, guardado local seguro y exportación a PDF imprimible.</li>
+                            <li>⭐ <strong>La Enciclopedia Interactiva de los 4 Volúmenes:</strong> Física nuclear, radiación, apagones y evacuación.</li>
+                            <li>⭐ <strong>Descarga Completa del Manual Maestro de 447 Páginas:</strong> Formato PDF de alta fidelidad para archivo físico.</li>
+                            <li>⭐ <strong>Mochila 72h con Todos los Perfiles:</strong> Bebé, Niño, Adulto Mayor y Mascotas con pesaje ergonómico.</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://pay.hotmart.com/placeholder-sistema47" class="btn btn-primary btn-full btn-lg" style="text-decoration:none;">
+                        DESBLOQUEAR SISTEMA COMPLETO ($47 USD)
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: PREGUNTAS FRECUENTES (FAQ AEO) -->
+    <section class="section section-dark" id="faq">
+        <div class="container container-narrow">
+            <div class="section-header">
+                <span class="section-tag">AUDITORÍA Y RESOLUCIÓN DE DUDAS</span>
+                <h2 class="section-title">PREGUNTAS FRECUENTES</h2>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:1rem;">
+                <div class="tactical-card" style="padding:1.25rem;">
+                    <h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--text-metallic);margin:0 0 0.5rem 0;">
+                        ¿Cómo recibo el acceso tras realizar la compra en Hotmart?
+                    </h3>
+                    <p style="font-size:var(--text-sm);color:var(--text-muted);margin:0;line-height:1.5;">
+                        La entrega es 100% inmediata y automatizada. Tras confirmar el pago en Hotmart, el sistema te redirige a tu pantalla de bienvenida con tu enlace personal único que desbloquea automáticamente tu nivel en la Web App y habilita los enlaces de descarga de todos los documentos y fichas.
+                    </p>
+                </div>
+
+                <div class="tactical-card" style="padding:1.25rem;">
+                    <h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--text-metallic);margin:0 0 0.5rem 0;">
+                        ¿Necesito conexión a internet continua para usar las calculadoras?
+                    </h3>
+                    <p style="font-size:var(--text-sm);color:var(--text-muted);margin:0;line-height:1.5;">
+                        No. La aplicación está programada como una PWA offline-first. Una vez abierta en tu móvil o navegador de ordenador, puedes añadirla a la pantalla de inicio y funcionará sin cobertura telefónica ni electricidad comercial.
+                    </p>
+                </div>
+
+                <div class="tactical-card" style="padding:1.25rem;">
+                    <h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--text-metallic);margin:0 0 0.5rem 0;">
+                        ¿En qué se diferencia el método de cultivo Kratky de otros sistemas hidropónicos?
+                    </h3>
+                    <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.5;">
+                        Los sistemas hidropónicos tradicionales (como NFT o aeroponía) requieren bombas de agua y aireadores eléctricos continuos; si la luz se corta 24 horas, las plantas mueren. El Método Kratky utiliza una cámara de aire húmedo fija que permite a la planta respirar y alimentarse de forma 100% pasiva sin un solo watt de energía.
+                    </p>
+                </div>
+
+                <div class="tactical-card" style="padding:1.25rem;">
+                    <h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--text-metallic);margin:0 0 0.5rem 0;">
+                        ¿Qué garantía técnica tengo sobre la validez de los datos?
+                    </h3>
+                    <p style="font-size:var(--text-sm);color:var(--text-muted);margin:0;line-height:1.5;">
+                        Cero mitos ni literatura especulativa de internet. Cada tabla de atenuación, dosis de potabilización y regla de decaimiento radiactivo está estrictamente referenciada con las 38 fuentes oficiales citadas (FEMA, CDC, OMS, OIEA y Oak Ridge National Laboratory). Además, cuentas con 7 días de garantía total de satisfacción gestionada por Hotmart.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA TÁCTICO -->
+    <footer class="footer-command">
+        <div class="container">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;border-bottom:1px solid var(--border-subtle);padding-bottom:1.5rem;">
+                <div>
+                    <span style="font-family:var(--font-display);font-size:1.2rem;color:#fff;font-weight:700;">SUPERVIVENCIA FINAL</span>
+                    <p style="font-size:12px;color:var(--text-dim);margin:4px 0 0 0;">Centro Civil de Mando · operacionsupervivencianuclear.com</p>
+                </div>
+                <div style="display:flex;gap:1.5rem;font-family:var(--font-mono);font-size:12px;">
+                    <a href="demo.html" style="color:var(--text-metallic);text-decoration:none;">Demo Instagram</a>
+                    <a href="cuaderno-gratis.html" style="color:var(--text-metallic);text-decoration:none;">Cuaderno Gratuito</a>
+                    <a href="bienvenida.html" style="color:var(--text-metallic);text-decoration:none;">Acceso Compradores</a>
+                    <a href="app/index.html" style="color:var(--action-yellow);text-decoration:none;">Web App</a>
+                </div>
+            </div>
+            <div style="font-size:11px;color:var(--text-dim);line-height:1.6;text-align:center;">
+                Aviso Legal y Descargo de Responsabilidad: Este ecosistema digital tiene fines exclusivamente educativos y de preparación civil preventiva. No sustituye las instrucciones ni órdenes directas emitidas por las autoridades militares o sanitarias competentes de cada nación durante una emergencia declarada.
+            </div>
+        </div>
+    </footer>
+
+    <!-- INICIALIZACIÓN DEL DIAGNÓSTICO EN EL HERO -->
+    <script type="module">
+        import { HeroDiagnosticWidget } from './assets/js/diagnostic.js';
+        new HeroDiagnosticWidget('hero-diagnostic-mount');
+    </script>
+</body>
+</html>

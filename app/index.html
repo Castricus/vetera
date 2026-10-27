@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CENTRO DE MANDO CIVIL · Supervivencia Final</title>
+    <!-- Estilos Tácticos Nórdicos -->
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <style>
+        .app-nav-tabs {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .app-nav-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.6rem 1rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-display);
+            font-size: var(--text-sm);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all var(--transition-fast);
+        }
+        .app-nav-tab:hover {
+            color: #fff;
+            border-color: var(--border-strong);
+            background: var(--bg-surface-elevated);
+        }
+        .app-nav-tab.active {
+            background: rgba(250, 204, 21, 0.15);
+            border-color: var(--action-yellow);
+            color: var(--action-yellow);
+        }
+        .app-nav-tab.locked {
+            opacity: 0.7;
+            position: relative;
+        }
+        .app-nav-tab.locked::after {
+            content: "🔒";
+            font-size: 10px;
+            margin-left: 4px;
+        }
+        .view-pane {
+            display: none;
+        }
+        .view-pane.active {
+            display: block;
+        }
+        @media print {
+            .header-command, .app-nav-tabs, .dev-tier-bar, .btn {
+                display: none !important;
+            }
+            body {
+                background: #fff !important;
+                color: #000 !important;
+            }
+            .tactical-card {
+                border: 1px solid #ccc !important;
+                background: #fff !important;
+                color: #000 !important;
+                box-shadow: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-radar-grid">
+
+    <!-- BARRA SUPERIOR DE MANDO -->
+    <header class="header-command">
+        <div class="container">
+            <a href="index.html" class="header-brand">
+                <span class="brand-badge">☢️</span>
+                <div>
+                    <h1 class="brand-title">CENTRO DE MANDO CIVIL</h1>
+                    <div class="brand-tag">SUITE TÁCTICA · DEFENSA NÓRDICA</div>
+                </div>
+            </a>
+
+            <div class="header-nav">
+                <div class="header-telemetry" id="top-telemetry">
+                    <span class="status-dot status-dot-green"></span>
+                    <span>SISTEMA ACTIVO</span>
+                </div>
+                <div id="tier-badge-container">
+                    <span class="badge-tactical" id="user-tier-pill" style="color:var(--action-yellow);border-color:var(--action-yellow);">
+                        PLAN: CARGANDO...
+                    </span>
+                </div>
+                <a href="../index.html" class="btn btn-sm btn-secondary">Salir al Sitio</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ÁREA PRINCIPAL DE LA APLICACIÓN -->
+    <main class="section" style="padding-top:2rem;">
+        <div class="container">
+
+            <!-- PESTAÑAS DE NAVEGACIÓN PRINCIPAL -->
+            <nav class="app-nav-tabs" id="main-nav-tabs">
+                <button class="app-nav-tab active" data-view="dashboard">📊 Dashboard</button>
+                <button class="app-nav-tab" data-view="water">💧 Agua y Racionamiento</button>
+                <button class="app-nav-tab" data-view="fallout">☢️ Fí­sica Nuclear / Fallout</button>
+                <button class="app-nav-tab" data-view="bag">🎒 Mochila 72 Horas</button>
+                <button class="app-nav-tab" data-view="decision">🧭 Triaje 90 Segundos</button>
+                <button class="app-nav-tab locked" data-view="kratky" data-req-tier="sistema">🌱 Bio-Soberanía Kratky</button>
+                <button class="app-nav-tab locked" data-view="fichas" data-req-tier="sistema">📋 40 Fichas Familiares</button>
+                <button class="app-nav-tab locked" data-view="library" data-req-tier="sistema">📚 Enciclopedia 4 Vols</button>
+            </nav>
+
+            <!-- VISTAS / PANES -->
+
+            <!-- VISTA 1: DASHBOARD DE CONTROL -->
+            <section id="view-dashboard" class="view-pane active">
+                <div class="tactical-card" style="margin-bottom:2rem;background:linear-gradient(180deg, rgba(21,38,54,0.85) 0%, rgba(16,29,41,0.95) 100%);">
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;border-bottom:1px solid var(--border-subtle);padding-bottom:1rem;">
+                        <div>
+                            <span class="badge-tactical" style="color:var(--status-green);">TELEMETRÍA GENERAL CIVIL</span>
+                            <h2 style="font-family:var(--font-display);font-size:var(--text-3xl);color:#fff;margin:0.5rem 0 0 0;text-transform:uppercase;">
+                                Estado de Preparación Familiar
+                            </h2>
+                        </div>
+                        <div id="dashboard-plan-label" style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--action-yellow);">
+                            Acceso Activo: SISTEMA COMPLETO
+                        </div>
+                    </div>
+
+                    <!-- Cuadrícula de Métricas Rápidas -->
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:1rem;margin-bottom:2rem;">
+                        <div style="background:#0b131c;padding:1.25rem;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
+                            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dim);text-transform:uppercase;">RESERVA HÍDRICA 14D</span>
+                            <div style="font-family:var(--font-display);font-size:var(--text-2xl);color:var(--action-yellow);font-weight:700;margin:4px 0;">
+                                168 Litros
+                            </div>
+                            <span style="font-size:12px;color:var(--text-muted);">Calculado para 3 integrantes</span>
+                        </div>
+
+                        <div style="background:#0b131c;padding:1.25rem;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
+                            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dim);text-transform:uppercase;">BLINDAJE RESIDENCIAL</span>
+                            <div style="font-family:var(--font-display);font-size:var(--text-2xl);color:var(--text-metallic);font-weight:700;margin:4px 0;">
+                                PF 32.0
+                            </div>
+                            <span style="font-size:12px;color:var(--text-muted);">96.9% radiación gamma bloqueada</span>
+                        </div>
+
+                        <div style="background:#0b131c;padding:1.25rem;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
+                            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dim);text-transform:uppercase;">MOCHILA 72H</span>
+                            <div style="font-family:var(--font-display);font-size:var(--text-2xl);color:var(--status-green);font-weight:700;margin:4px 0;">
+                                14/20 Ítems
+                            </div>
+                            <span style="font-size:12px;color:var(--text-muted);">7.8 kg · Ergonomía óptima</span>
+                        </div>
+
+                        <div style="background:#0b131c;padding:1.25rem;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);">
+                            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dim);text-transform:uppercase;">SOBERANÍA KRATKY</span>
+                            <div style="font-family:var(--font-display);font-size:var(--text-2xl);color:var(--status-green);font-weight:700;margin:4px 0;">
+                                ACTIVO
+                            </div>
+                            <span style="font-size:12px;color:var(--text-muted);">Fórmula 3 componentes lista</span>
+                        </div>
+                    </div>
+
+                    <!-- Accesos Rápidos a Módulos -->
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:1rem;">
+                        <div class="tactical-card" style="padding:1.25rem;cursor:pointer;" data-goto="water">
+                            <h3 style="font-family:var(--font-display);color:#fff;font-size:1.1rem;margin:0 0 0.5rem 0;">💧 Calculadora Hídrica</h3>
+                            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;">Racionamiento exacto según personas, clima y gotas de desinfección.</p>
+                        </div>
+                        <div class="tactical-card" style="padding:1.25rem;cursor:pointer;" data-goto="fallout">
+                            <h3 style="font-family:var(--font-display);color:#fff;font-size:1.1rem;margin:0 0 0.5rem 0;">☢️ Simulador Nuclear</h3>
+                            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;">Decaimiento por Ley 7/10 y cálculo de factor de blindaje por material.</p>
+                        </div>
+                        <div class="tactical-card" style="padding:1.25rem;cursor:pointer;" data-goto="bag">
+                            <h3 style="font-family:var(--font-display);color:#fff;font-size:1.1rem;margin:0 0 0.5rem 0;">🎒 Mochila 72 Horas</h3>
+                            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;">Sistema de 3 capas con pesaje dinámico y regla de marcha de 20 min.</p>
+                        </div>
+                        <div class="tactical-card" style="padding:1.25rem;cursor:pointer;" data-goto="decision">
+                            <h3 style="font-family:var(--font-display);color:#fff;font-size:1.1rem;margin:0 0 0.5rem 0;">🧭 Triaje de los 90s</h3>
+                            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;">¿Quedarse o salir? Protocolos de acción ante las 12 amenazas críticas.</p>
+                        </div>
+                        <div class="tactical-card" style="padding:1.25rem;cursor:pointer;border-color:rgba(34,197,94,0.4);" data-goto="kratky">
+                            <h3 style="font-family:var(--font-display);color:var(--status-green);font-size:1.1rem;margin:0 0 0.5rem 0;">🌱 Hidroponía Kratky</h3>
+                            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;">Bio-soberanía pasiva sin bombas ni electricidad en botellas recicladas.</p>
+                        </div>
+                        <div class="tactical-card" style="padding:1.25rem;cursor:pointer;border-color:rgba(250,204,21,0.4);" data-goto="fichas">
+                            <h3 style="font-family:var(--font-display);color:var(--action-yellow);font-size:1.1rem;margin:0 0 0.5rem 0;">📋 40 Fichas Familiares</h3>
+                            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;">Plan familiar interactivo con auto-guardado e impresión física.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VISTA 2: AGUA Y RACIONAMIENTO -->
+            <section id="view-water" class="view-pane">
+                <div id="water-engine-mount"></div>
+            </section>
+
+            <!-- VISTA 3: FÍSICA NUCLEAR Y BLINDAJE -->
+            <section id="view-fallout" class="view-pane">
+                <div id="fallout-engine-mount"></div>
+            </section>
+
+            <!-- VISTA 4: MOCHILA DE 72 HORAS -->
+            <section id="view-bag" class="view-pane">
+                <div id="bag-engine-mount"></div>
+            </section>
+
+            <!-- VISTA 5: TRIAJE DE LOS 90 SEGUNDOS -->
+            <section id="view-decision" class="view-pane">
+                <div id="decision-engine-mount"></div>
+            </section>
+
+            <!-- VISTA 6: LABORATORIO KRATKY (EXCLUSIVO SISTEMA $47) -->
+            <section id="view-kratky" class="view-pane">
+                <div id="kratky-engine-mount"></div>
+            </section>
+
+            <!-- VISTA 7: LAS 40 FICHAS DEL PLAN FAMILIAR (EXCLUSIVO SISTEMA $47) -->
+            <section id="view-fichas" class="view-pane">
+                <div id="fichas-engine-mount"></div>
+            </section>
+
+            <!-- VISTA 8: ENCICLOPEDIA DE LOS 4 VOLÚMENES (EXCLUSIVO SISTEMA $47) -->
+            <section id="view-library" class="view-pane">
+                <div class="tactical-card" style="margin-bottom:2rem;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;border-bottom:1px solid var(--border-subtle);padding-bottom:1rem;flex-wrap:wrap;gap:1rem;">
+                        <div>
+                            <span class="badge-tactical" style="color:var(--text-metallic);">📚 BIBLIOTECA TÉCNICA CLASIFICADA</span>
+                            <h2 style="font-family:var(--font-display);font-size:var(--text-2xl);color:#fff;margin:0.5rem 0 0 0;text-transform:uppercase;">
+                                Los 4 Volúmenes Maestros (Manual Completo 447p)
+                            </h2>
+                        </div>
+                        <a href="../documentos/Manual de Supervivencia ante una Guerra Nuclear.pdf" download class="btn btn-sm btn-primary">
+                            📥 Descargar Manual en PDF (19 MB)
+                        </a>
+                    </div>
+                    
+                    <div id="volumes-accordion-container" style="display:flex;flex-direction:column;gap:1rem;">
+                        <!-- Inyectado dinámicamente desde volumes.js -->
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- BARRA FLOTANTE DE SIMULACIÓN Y DESARROLLO (SOLO PARA PRUEBAS DEL PROPIETARIO) -->
+    <div class="dev-tier-bar" style="position:fixed;bottom:10px;right:10px;background:rgba(10,17,24,0.95);border:1px solid var(--border-strong);padding:6px 12px;border-radius:var(--radius-sm);z-index:9000;display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;">
+        <span style="color:var(--text-dim);">PROBAR TIER:</span>
+        <button id="dev-set-guest" style="background:#27272a;border:1px solid #3f3f46;color:#fff;padding:2px 6px;border-radius:2px;cursor:pointer;">Guest</button>
+        <button id="dev-set-kit" style="background:#1e3a8a;border:1px solid #3b82f6;color:#93c5fd;padding:2px 6px;border-radius:2px;cursor:pointer;">Kit ($17)</button>
+        <button id="dev-set-sistema" style="background:#713f12;border:1px solid #facc15;color:#facc15;padding:2px 6px;border-radius:2px;cursor:pointer;font-weight:bold;">Sistema ($47)</button>
+    </div>
+
+    <!-- SCRIPTS DE LA APLICACIÓN -->
+    <script type="module">
+        import { AuthState, TIERS } from './js/auth-state.js';
+        import { WaterEngine } from './js/water-engine.js';
+        import { FalloutEngine } from './js/fallout-engine.js';
+        import { KratkyEngine } from './js/kratky-engine.js';
+        import { BagEngine } from './js/bag-engine.js';
+        import { DecisionEngine } from './js/decision-engine.js';
+        import { FamilyPlanEngine } from './js/family-plan-engine.js';
+        import { VOLUMES } from './data/volumes.js';
+
+        // 1. Inicializar Motores en sus contenedores
+        const waterApp = new WaterEngine('water-engine-mount');
+        const falloutApp = new FalloutEngine('fallout-engine-mount');
+        const kratkyApp = new KratkyEngine('kratky-engine-mount');
+        const bagApp = new BagEngine('bag-engine-mount');
+        const decisionApp = new DecisionEngine('decision-engine-mount');
+        const fichasApp = new FamilyPlanEngine('fichas-engine-mount');
+
+        // 2. Renderizar Biblioteca de Volúmenes
+        const volContainer = document.getElementById('volumes-accordion-container');
+        if (volContainer && VOLUMES) {
+            volContainer.innerHTML = VOLUMES.map((vol, vIdx) => `
+                <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);overflow:hidden;">
+                    <div style="padding:1rem 1.25rem;background:rgba(16,29,41,0.7);display:flex;justify-content:space-between;align-items:center;cursor:pointer;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'">
+                        <div style="display:flex;align-items:center;gap:10px;">
+                            <span style="font-size:1.5rem;">${vol.icon || '📖'}</span>
+                            <div>
+                                <span style="font-family:var(--font-mono);font-size:11px;color:${vol.coverColor || 'var(--text-metallic)'};">${vol.number} · ${vol.badge || ''}</span>
+                                <h3 style="font-family:var(--font-display);font-size:1.15rem;color:#fff;margin:2px 0 0 0;text-transform:uppercase;">${vol.title}</h3>
+                            </div>
+                        </div>
+                        <span style="font-size:12px;color:var(--text-dim);">${vol.readTime || ''} ▼</span>
+                    </div>
+                    <div style="padding:1.25rem;display:none;border-top:1px solid var(--border-subtle);background:#0b131c;">
+                        <p style="font-size:var(--text-sm);color:var(--text-metallic);margin-bottom:1rem;">${vol.subtitle}</p>
+                        ${vol.chapters.map(ch => `
+                            <div style="margin-bottom:1.25rem;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:1rem;">
+                                <h4 style="font-family:var(--font-display);font-size:1rem;color:var(--action-yellow);margin:0 0 0.5rem 0;text-transform:uppercase;">${ch.title}</h4>
+                                <div style="font-size:var(--text-xs);color:var(--text-muted);line-height:1.6;" class="chapter-content-body">
+                                    ${ch.content}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 3. Gestión de Pestañas y Control de Acceso
+        function updateTierUI() {
+            const currentTier = AuthState.getCurrentTier();
+            const pill = document.getElementById('user-tier-pill');
+            const dashLabel = document.getElementById('dashboard-plan-label');
+
+            if (currentTier === TIERS.SISTEMA) {
+                if (pill) {
+                    pill.textContent = 'PLAN: SISTEMA COMPLETO ($47)';
+                    pill.style.color = 'var(--action-yellow)';
+                    pill.style.borderColor = 'var(--action-yellow)';
+                }
+                if (dashLabel) dashLabel.textContent = 'Acceso Activo: SISTEMA COMPLETO ($47)';
+            } else if (currentTier === TIERS.KIT) {
+                if (pill) {
+                    pill.textContent = 'PLAN: KIT DIGITAL ($17)';
+                    pill.style.color = '#38bdf8';
+                    pill.style.borderColor = '#38bdf8';
+                }
+                if (dashLabel) dashLabel.textContent = 'Acceso Activo: KIT DIGITAL ($17)';
+            } else {
+                if (pill) {
+                    pill.textContent = 'PLAN: VISTA PREVIA (GUEST)';
+                    pill.style.color = 'var(--text-dim)';
+                    pill.style.borderColor = 'var(--border-subtle)';
+                }
+                if (dashLabel) dashLabel.textContent = 'Acceso Activo: VISTA PREVIA';
+            }
+
+            // Actualizar botones con candado
+            const lockedTabs = document.querySelectorAll('.app-nav-tab[data-req-tier]');
+            lockedTabs.forEach(tab => {
+                const req = tab.dataset.reqTier;
+                const has = AuthState.hasAccess(req);
+                if (has) {
+                    tab.classList.remove('locked');
+                } else {
+                    tab.classList.add('locked');
+                }
+            });
+        }
+
+        function switchView(viewName) {
+            const tabs = document.querySelectorAll('.app-nav-tab');
+            const targetTab = document.querySelector(`.app-nav-tab[data-view="${viewName}"]`);
+            
+            // Verificar permiso si la pestaña requiere tier
+            if (targetTab && targetTab.dataset.reqTier) {
+                const reqTier = targetTab.dataset.reqTier;
+                if (!AuthState.hasAccess(reqTier)) {
+                    AuthState.showUpgradeModal(targetTab.textContent.trim(), reqTier);
+                    return;
+                }
+            }
+
+            tabs.forEach(t => t.classList.remove('active'));
+            if (targetTab) targetTab.classList.add('active');
+
+            const panes = document.querySelectorAll('.view-pane');
+            panes.forEach(p => p.classList.remove('active'));
+
+            const activePane = document.getElementById(`view-${viewName}`);
+            if (activePane) activePane.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Eventos de Pestañas
+        document.querySelectorAll('.app-nav-tab').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                switchView(e.currentTarget.dataset.view);
+            });
+        });
+
+        // Eventos de Tarjetas de Acceso Rápido en Dashboard
+        document.querySelectorAll('[data-goto]').forEach(card => {
+            card.addEventListener('click', (e) => {
+                switchView(e.currentTarget.dataset.goto);
+            });
+        });
+
+        // Controles de Modo Desarrollador (para pruebas inmediatas del dueño)
+        document.getElementById('dev-set-guest')?.addEventListener('click', () => {
+            AuthState.setTier(TIERS.GUEST);
+            updateTierUI();
+        });
+        document.getElementById('dev-set-kit')?.addEventListener('click', () => {
+            AuthState.setTier(TIERS.KIT);
+            updateTierUI();
+        });
+        document.getElementById('dev-set-sistema')?.addEventListener('click', () => {
+            AuthState.setTier(TIERS.SISTEMA);
+            updateTierUI();
+        });
+
+        // Inicializar UI de Tiers
+        updateTierUI();
+    </script>
+</body>
+</html>

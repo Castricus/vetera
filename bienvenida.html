@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIENVENIDA · Acceso Inmediato a Supervivencia Final</title>
+    <!-- Estilos Tácticos Nórdicos -->
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body class="bg-radar-grid" style="display:flex;flex-direction:column;min-height:100vh;">
+
+    <header class="header-command">
+        <div class="container">
+            <a href="index.html" class="header-brand">
+                <span class="brand-badge">☢️</span>
+                <div>
+                    <h1 class="brand-title">CENTRO DE MANDO CIVIL</h1>
+                    <div class="brand-tag">ACTIVACIÓN DE ACCESO POST-COMPRA</div>
+                </div>
+            </a>
+            <div class="status-indicator">
+                <span class="status-dot status-dot-green"></span>
+                <span style="color:var(--status-green);">PAGO CONFIRMADO POR HOTMART</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="section" style="flex:1;display:flex;align-items:center;padding:3rem 0;">
+        <div class="container container-narrow">
+            <div class="tactical-card" style="padding:2.5rem 2rem;border-color:var(--action-yellow);box-shadow:0 0 40px rgba(250,204,21,0.15);">
+                <div style="text-align:center;margin-bottom:2rem;">
+                    <span class="badge-tactical" id="activated-tier-badge" style="color:var(--action-yellow);border-color:var(--action-yellow);">
+                        ACCESO ACTIVADO CON ÉXITO
+                    </span>
+                    <h2 class="section-title" style="font-size:var(--text-3xl);margin-top:0.75rem;text-transform:uppercase;">
+                        Bienvenido a la Defensa Civil de tu Familia
+                    </h2>
+                    <p style="font-size:var(--text-base);color:var(--text-muted);max-width:620px;margin:0 auto;line-height:1.6;">
+                        Tu adquisición ha sido procesada correctamente. A partir de este momento tienes acceso permanente a las herramientas interactivas, calculadoras y documentación técnica de mando.
+                    </p>
+                </div>
+
+                <!-- Botones de Acción Inmediata -->
+                <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:1.5rem;margin-bottom:2.5rem;">
+                    <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);padding:1.5rem;border-radius:var(--radius-sm);display:flex;flex-direction:column;justify-content:space-between;">
+                        <div>
+                            <span style="font-size:2rem;">💻</span>
+                            <h3 style="font-family:var(--font-display);font-size:1.25rem;color:#fff;margin:0.5rem 0 0.25rem 0;text-transform:uppercase;">
+                                Web App Táctica Interactiva
+                            </h3>
+                            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:1.5rem;line-height:1.5;">
+                                Abre el Centro de Mando Civil con las calculadoras hídricas, simulador de blindaje, mochila 72h y módulo Kratky. Funciona 100% offline.
+                            </p>
+                        </div>
+                        <a href="app/index.html" class="btn btn-primary btn-full">
+                            ABRIR WEB APP AHORA
+                        </a>
+                    </div>
+
+                    <div style="background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);padding:1.5rem;border-radius:var(--radius-sm);display:flex;flex-direction:column;justify-content:space-between;">
+                        <div>
+                            <span style="font-size:2rem;">📥</span>
+                            <h3 style="font-family:var(--font-display);font-size:1.25rem;color:#fff;margin:0.5rem 0 0.25rem 0;text-transform:uppercase;">
+                                Manual Maestro de 447 Páginas
+                            </h3>
+                            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:1.5rem;line-height:1.5;">
+                                Descarga directa del archivo enciclopédico oficial en PDF de alta fidelidad para guardar en tu disco duro o imprimir para emergencias.
+                            </p>
+                        </div>
+                        <a href="documentos/Manual de Supervivencia ante una Guerra Nuclear.pdf" download class="btn btn-secondary btn-full">
+                            DESCARGAR MANUAL (PDF 19 MB)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Secuencia Táctica de Inicio (Primeros Pasos) -->
+                <div style="background:#0b131c;border:1px solid var(--border-subtle);padding:1.5rem;border-radius:var(--radius-sm);">
+                    <h4 style="font-family:var(--font-display);font-size:var(--text-base);color:var(--action-yellow);margin:0 0 1rem 0;text-transform:uppercase;">
+                        🛡️ Tus Primeras 3 Acciones Innegociables:
+                    </h4>
+                    <ol style="font-size:var(--text-xs);color:#fff;line-height:1.7;margin:0;padding-left:1.25rem;">
+                        <li><strong>Calcula tu Meta Hídrica en la Web App:</strong> Ve a la pestaña <em>Agua y Racionamiento</em>, introduce el número de integrantes de tu hogar y asegura tus primeros 14 días.</li>
+                        <li><strong>Rellena la Ficha 01 y 09 de tu Plan Familiar:</strong> Anota alergias, medicaciones crónicas y recorta las tarjetas de bolsillo de tus hijos.</li>
+                        <li><strong>Guarda la Web App en tu Pantalla de Inicio:</strong> Pulsa en 'Añadir a pantalla de inicio' en tu móvil para que puedas abrirla sin internet durante un apagón.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { AuthState, TIERS } from './app/js/auth-state.js';
+
+        // Auto-activar según parámetro de URL enviado por Hotmart (ej. bienvenida.html?tier=sistema)
+        const params = new URLSearchParams(window.location.search);
+        const tierParam = params.get('tier') || 'sistema'; // Si compró, por defecto activar el tier correspondiente
+        AuthState.setTier(tierParam);
+
+        const badge = document.getElementById('activated-tier-badge');
+        if (badge) {
+            badge.textContent = `PLAN ACTIVADO: ${tierParam === 'sistema' ? 'SISTEMA COMPLETO ($47 USD)' : 'KIT DIGITAL ($17 USD)'}`;
+        }
+    </script>
+</body>
+</html>
